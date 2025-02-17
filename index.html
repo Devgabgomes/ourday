@@ -1,0 +1,438 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Nosso dia</title>
+    <style>
+
+        *{
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        body {
+            width: 100vw;
+            min-height: 100vh;
+            padding: 50px 10px;
+            font-family: Arial, sans-serif;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            background-color: #ffebf0;
+            text-align: center;
+        }
+
+        hr{
+            border: 1px solid #e91e63;
+        }
+
+        iframe{
+            border: 1px solid #e91e63;
+        }
+        
+        audio{
+            display: none;
+        }
+
+        .title{
+            font-size: 1.5em;
+            color: #333;
+        }
+
+        .div-music{
+            margin: 20px 0px;
+            display: flex;
+        }
+
+        .playmusic{
+            margin: 5px;
+        }
+
+        .playmusic button{
+            width: 150px;
+            height: 40px;
+            background-color: #e91e63;
+            color: white;
+            border: none;
+            font-weight: bold;
+        }
+
+        .carrossel {
+            position: relative;
+            width: 95%;
+            height: 420px;
+            margin: 50px 0px;
+            overflow: hidden;
+            border-radius: 0px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+        }
+        .carrossel-images {
+            display: flex;
+            transition: transform 0.5s ease-in-out;
+        }
+        .carrossel-images img {
+            width: 100%;
+            border-radius: 0px;
+        }
+        .btn {
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+            background: rgba(0, 0, 0, 0.5);
+            color: white;
+            border: none;
+            padding: 10px;
+            cursor: pointer;
+            border-radius: 50%;
+        }
+        .btn-left { left: 10px; }
+        .btn-right { right: 10px; }
+
+        .container {
+            background: white;
+            padding: 20px;
+            margin-bottom: 20px;
+            border-radius: 0px;
+            box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+            width: 95%;
+        }
+        h1 {
+            font-size: 1.5em;
+            color: #e91e63;
+        }
+        #contador {
+            font-size: 1.1em;
+            color: #333;
+            margin: 20px;
+        }
+
+        hr{
+            margin: 20px;
+        }
+
+        p{
+            font-size: 1.2em;
+            color: #333;
+            margin: 20px;
+        }
+
+        .foto{
+            background: white;
+            padding: 20px;
+            box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+            width: 300px;
+            height: 320px;
+        }
+
+        .foto p{
+            font-size: .9em;
+            text-align: start;
+        }
+
+        .imgfoto1{
+            width: 100%;
+            height: 250px;
+        }
+
+        .imgfoto2{
+            width: 100%;
+            height: 250px;
+        }
+
+        #foto1{
+            background-image: url(image/img4.jpg);
+            background-size: cover;
+            background-repeat: no-repeat;
+            background-position: center;
+        }
+
+        #foto2{
+            background-image: url(image/img5.jpg);
+            background-size: cover;
+            background-repeat: no-repeat;
+            background-position: center;
+        }
+
+        #foto3{
+            background-image: url(image/img6.jpg);
+            background-size: cover;
+            background-repeat: no-repeat;
+            background-position: center;
+        }
+
+        #div1{
+            position: relative;
+            right: 20px;
+        }
+        #div2{
+            position: relative;
+            z-index: 1;
+            bottom: 10px;
+        }
+        #div3{
+            position: relative;
+            left: 20px;
+            bottom: 20px;
+            margin-bottom: 50px;
+        }
+        
+        .calendario{
+            background: white;
+            padding: 20px;
+            margin: 50px;
+            box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+            border-radius: 0px;
+            width: 95%;
+            height: 300px;
+        }
+
+        .calendario h1{
+            font-size: 1.0em;
+        }
+        .calendario h2{
+            font-size: .9em;
+        }
+
+        .container-table{
+            display: flex;
+            margin: 5px 0px;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .calendario table{
+            width: 50%;
+            display: flex;
+            align-items: center;
+        }
+
+        legend{
+            border-bottom: 1px solid black;
+            padding: 6px;
+            margin-bottom: 6px;
+        }
+
+        .ajust{
+            width: 50%;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .calendario table td{
+            padding: 2px 6px;
+            font-size: .5em;
+        }
+
+        .div-calendario{
+            background: white;
+            padding: 5px;
+            margin: 50px;
+            box-shadow: 0px 0px 5px rgba(0, 0, 0, 0.438);
+            border-radius: 0px;
+            width: 90px;
+            height: 90px;
+            transform: rotate(-80deg);
+        }
+
+        .foto-calendario{
+            width: 100%;
+            height: 100%;
+            background-image: url(image/img7.jpg);
+            background-size: cover;
+            background-position: center;
+        }
+
+        .ourday{
+            background-image: url(image/heart.webp);
+            background-size: contain;
+            background-position: center;
+            background-repeat: no-repeat;
+        }
+
+
+        .music{
+            width: 95%;
+            display: flex;
+            margin: 40px 0px;
+            align-items: center;
+            justify-content: space-around;
+        }
+    </style>
+</head>
+<body>
+    <audio id="musica" autoplay preload="auto" controls loop>
+        <source src="image/Stephen Sanchez - Until I Found You - Piano Karaoke Instrumental Cover with Lyrics.mp3" type="audio/mpeg" preload>
+        Your browser does not support the audio tag.
+      </audio>
+    <div class="title">Para o meu Amor <img src="image/heart.webp" width="25px" alt=""></div>
+    <div class="div-music">
+        <div class="playmusic"><button onclick="tocarmusic()">Tocar música  ▶</button></div>
+        <div class="playmusic"><button onclick="pararmusic()">Parar música ❚❚</button></div>
+    </div>
+    <div class="carrossel">
+        <div class="carrossel-images">
+            <img src="image/img1.jpg" alt="Imagem 1">
+            <img src="image/img2.jpg" alt="Imagem 2">
+            <img src="image/img3.jpg" alt="Imagem 3">
+        </div>
+        <button class="btn btn-left" onclick="prevSlide()">&#10094;</button>
+        <button class="btn btn-right" onclick="nextSlide()">&#10095;</button>
+    </div>
+
+    <div class="container">
+        <h1>juntos há:</h1>
+        <div id="contador"></div>
+        <hr>
+        <p>Oii minha pequena. Você é o amor da minha vida, sou grato por ter você, fiz com muito amor e carrinho. Eu te amo meu amor! <img src="image/heart.webp" width="25px" alt=""></p>
+    </div>
+
+    <div class="foto" id="div1">
+        <div class="imgfoto1" id="foto1"></div>
+        <p>Onde tudo começou..</p>
+    </div>
+    <div class="foto" id="div2">
+        <div class="imgfoto2" id="foto2"></div>
+        <p>Aqui faziamos 1 ano juntos</p>
+    </div>
+    <div class="foto" id="div3">
+        <div class="imgfoto2" id="foto3"></div>
+        <p>2 anos juntos e muitas mudanças</p>
+    </div>
+
+    <div class="title">A nossa data <img src="image/heart.webp" width="25px" alt=""></div>
+    <div class="calendario">
+        <h1>O começo de nossa história, Te amo <img src="image/heart.webp" width="25px" alt=""></h1>
+        <div class="container-table">
+            <div>
+                <table>
+                    <legend>Janeiro de 2023</legend>
+                    <tr>
+                        <td>1</td>
+                        <td>2</td>
+                        <td>3</td>
+                        <td>4</td>
+                        <td>5</td>
+                        <td>6</td>
+                        <td>7</td>
+                    </tr>
+                    <tr>
+                        <td>8</td>
+                        <td>9</td>
+                        <td>10</td>
+                        <td>11</td>
+                        <td>12</td>
+                        <td>13</td>
+                        <td>14</td>
+                    </tr>
+                    <tr>
+                        <td>15</td>
+                        <td>16</td>
+                        <td>17</td>
+                        <td>18</td>
+                        <td>19</td>
+                        <td>20</td>
+                        <td>21</td>
+                    </tr>
+                    <tr>
+                        <td class="ourday">22</td>
+                        <td>23</td>
+                        <td>24</td>
+                        <td>25</td>
+                        <td>26</td>
+                        <td>27</td>
+                        <td>28</td>
+                    </tr>
+                    <tr>
+                        <td>29</td>
+                        <td>30</td>
+                        <td>31</td>
+                    </tr>
+                </table>
+            </div>
+            <div class="ajust">
+                <div class="div-calendario">
+                    <div class="foto-calendario"></div>
+                </div>
+            </div>
+        </div>
+        <div><h2>Vitória e Gabriel</h2></div>
+    </div>
+
+    <div class="title">Músicas que dedico a você princesa <img src="image/heart.webp" width="25px" alt=""></div>
+    <div class="music">
+        <iframe width="150" height="100" src="https://www.youtube.com/embed/8tFDFOSDUqI?si=psXH7HY7H7TKLfyc" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+        <iframe width="150" height="100" src="https://www.youtube.com/embed/J96pIUD_OEY?si=mz57RW6sbwuuZz5f" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+    </div>
+    <div class="music">
+        <iframe width="150" height="100" src="https://www.youtube-nocookie.com/embed/Bm_kiwytdA4?si=CPyq8PeBZxbG84or" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+        <iframe width="150" height="100" src="https://www.youtube-nocookie.com/embed/ZE1yh5NoDiU?si=kCWAiNZzLXxu9JL_" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+    </div>
+    <div class="music">
+        <iframe width="150" height="100" src="https://www.youtube.com/embed/zF2I8IazFNo?si=WB34IBa9iCJLDMes" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+        <iframe width="150" height="100" src="https://www.youtube.com/embed/fQv-5OuLODE?si=UUTQCq2pKMSDVvru" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+    </div>
+
+    <audio id="musica" autoplay>
+        <source src="sua-musica.mp3" type="audio/mpeg">
+        Seu navegador não suporta o elemento de áudio.
+    </audio>
+    
+    <script>
+ 
+        let musica = document.querySelector("#musica");
+        
+
+        function tocarmusic(){
+            musica.play();
+        }
+        function pararmusic(){
+            musica.pause();
+        }
+    </script>
+
+    <script>
+        let index = 0;
+        const images = document.querySelectorAll(".carrossel-images img");
+        const total = images.length;
+
+        function showSlide() {
+            const carousel = document.querySelector(".carrossel-images");
+            carousel.style.transform = `translateX(${-index * 100}%)`;
+        }
+
+        function nextSlide() {
+            index = (index + 1) % total;
+            showSlide();
+        }
+
+        function prevSlide() {
+            index = (index - 1 + total) % total;
+            showSlide();
+        }
+    </script>
+    
+    <script>
+        function atualizarTempo() {
+            const dataNamoro = new Date("2023-01-22T00:00:00");
+            const agora = new Date();
+            
+            let diferenca = agora - dataNamoro;
+            
+            const segundos = Math.floor(diferenca / 1000) % 60;
+            const minutos = Math.floor(diferenca / (1000 * 60)) % 60;
+            const horas = Math.floor(diferenca / (1000 * 60 * 60)) % 24;
+            const dias = Math.floor(diferenca / (1000 * 60 * 60 * 24)) % 30;
+            const meses = Math.floor(diferenca / (1000 * 60 * 60 * 24 * 30)) % 12;
+            const anos = Math.floor(diferenca / (1000 * 60 * 60 * 24 * 365));
+
+            document.getElementById("contador").innerHTML = 
+                `${anos} anos, ${meses} meses, ${dias} dias, ${horas} horas, ${minutos} minutos e ${segundos} segundos`;
+        }
+        
+        setInterval(atualizarTempo, 1000);
+        atualizarTempo();
+    </script>
+</body>
+</html>
